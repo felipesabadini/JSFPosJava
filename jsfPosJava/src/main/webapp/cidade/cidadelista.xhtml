@@ -15,6 +15,9 @@
                     <p:column headerText="Nome" filterBy="#{cid.nome}" filterMatchMode="contains">
                         <p:outputLabel value="#{cid.nome}"/>
                     </p:column>
+                    <p:column headerText="Estado" filterBy="#{cid.estado.nome}" filterMatchMode="contains">
+                        <p:outputLabel value="#{cid.estado.nome}"/>
+                    </p:column>
                     <p:column headerText="Opereações">
                         <p:commandButton icon="ui-icon-pencil" action="cidadeedita" actionListener="#{cidadeControle.alterar(cid)}"/>
                         <p:commandButton icon="ui-icon-closethick" ajax="false" actionListener="#{cidadeControle.excluir(cid)}"/>

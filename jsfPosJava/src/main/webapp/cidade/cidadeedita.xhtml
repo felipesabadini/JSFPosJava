@@ -3,7 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:p="http://primefaces.org/ui"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
     <ui:composition template="/index.xhtml">
         <ui:define name="boby">
             <h:form>
@@ -14,8 +15,14 @@
                                       required="true" requiredMessage="O nome é Obrigatório!"/>
                     <p:message for="nome"/>
                     
-                    Estado:<p:inputText value="#{cidadeControle.cidade.estado}" id="estado"
-                                      required="true" requiredMessage="O estado é Obrigatório!"/>
+                    Estado:<p:selectOneMenu value="#{cidadeControle.cidade.estado}" id="estado"
+                                      required="true" requiredMessage="O estado é Obrigatória!"
+                                      converter="#{cidadeControle.estadoConverter}">
+                        <f:selectItems value="#{estadoControle.lista}"
+                                       var="est"
+                                       itemLabel="#{est.nome}"
+                                       itemValue="#{est.nome}" />
+                    </p:selectOneMenu>
                     <p:message for="estado"/>
                     <p:commandButton value="Salvar" actionListener="#{cidadeControle.salvar()}" action="cidadelista" ajax="false"/>
                     <p:commandButton value="Voltar" action="cidadelista" immediate="true" ajax="false"/>
