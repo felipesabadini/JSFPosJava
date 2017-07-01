@@ -1,14 +1,48 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
     <h:head>
-        <title>Sistema Pós UniCesumar</title>
+        <title>Sistema Pós Unicesumar</title>
     </h:head>
     <h:body>
         <h:form>
-            <h2>Sistema Pós</h2>
-            <h:commandButton value="Cadastro de Estado" action="estadoEdita"/>
+            <p:layout fullPage="true">
+                <p:layoutUnit position="north" resizable="true"  
+                              collapsible="true" collapsed="false"  size="90" style="text-align: center"
+                              >
+                    <p align="center"><h2>Sistema Pós Unicesumar</h2></p>
+                </p:layoutUnit>
+                <p:layoutUnit position="west" resizable="false" 
+                              size="180" header="Menu">
+                    <p:panelMenu style="width: 170">
+                        <p:submenu label="Cadastros">
+                            <p:menuitem value="Estado" action="/estado/estadolista" ajax="false"/>
+                            <p:menuitem value="Cidade" action="#" ajax="false"/>
+                        </p:submenu>
+                        <p:submenu label="Movimentos">
+                            <p:menuitem value="Compra" action="#" ajax="false"/>
+                            <p:menuitem value="Venda" action="#" ajax="false"/>
+                        </p:submenu>
+                        <p:submenu label="Relatórios">
+                            <p:menuitem value="Estado" action="#" ajax="false"/>
+                            <p:menuitem value="Cidade" action="#" ajax="false"/>
+                        </p:submenu>
+                    </p:panelMenu>
+                </p:layoutUnit>
+                
+                <p:layoutUnit position="south" size="40" style="text-align: center">
+                    Todos os direitos reservados. @2017
+                </p:layoutUnit>
+                
+                <p:layoutUnit position="center">
+                    <ui:insert id="corpo" name="boby">Seja bem vindo!</ui:insert>
+                </p:layoutUnit>
+            </p:layout>
         </h:form>
     </h:body>
 </html>
+
+
