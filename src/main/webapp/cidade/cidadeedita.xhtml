@@ -14,14 +14,13 @@
                     Nome:<p:inputText value="#{cidadeControle.cidade.nome}" id="nome"
                                       required="true" requiredMessage="O nome é Obrigatório!"/>
                     <p:message for="nome"/>
-                    
-                    Estado:<p:selectOneMenu value="#{cidadeControle.cidade.estado}" id="estado"
-                                      required="true" requiredMessage="O estado é Obrigatória!"
-                                      converter="#{cidadeControle.estadoConverter}">
+                    Estado:<p:selectOneMenu value="#{cidadeControle.cidade.estado}" id="estado" 
+                                       required="true" requiredMessage="O estado é obrigatória!"
+                                       converter="#{cidadeControle.estadoConverter}">
                         <f:selectItems value="#{estadoControle.lista}"
                                        var="est"
                                        itemLabel="#{est.nome}"
-                                       itemValue="#{est.nome}" />
+                                       itemValue="#{est.nome}"/>
                     </p:selectOneMenu>
                     <p:message for="estado"/>
                     <p:commandButton value="Salvar" actionListener="#{cidadeControle.salvar()}" action="cidadelista" ajax="false"/>

@@ -1,3 +1,8 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package enetidade;
 
 import java.io.Serializable;
@@ -6,10 +11,13 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
 
+/**
+ *
+ * @author UniCesumar
+ */
 @Entity
-public class Cidade implements Serializable {
+public class Estado implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -17,8 +25,8 @@ public class Cidade implements Serializable {
     private Long id;
     @Column(length = 100, nullable = false)
     private String nome;
-    @ManyToOne
-    private Estado estado;
+    @Column(length = 2, nullable = false)
+    private String sigla;
 
     public String getNome() {
         return nome;
@@ -28,12 +36,12 @@ public class Cidade implements Serializable {
         this.nome = nome;
     }
 
-    public Estado getEstado() {
-        return estado;
+    public String getSigla() {
+        return sigla;
     }
 
-    public void setEstado(Estado estado) {
-        this.estado = estado;
+    public void setSigla(String sigla) {
+        this.sigla = sigla;
     }
 
     public Long getId() {
@@ -53,10 +61,11 @@ public class Cidade implements Serializable {
 
     @Override
     public boolean equals(Object object) {
-        if (!(object instanceof Cidade)) {
+        // TODO: Warning - this method won't work in the case the id fields are not set
+        if (!(object instanceof Estado)) {
             return false;
         }
-        Cidade other = (Cidade) object;
+        Estado other = (Estado) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -65,7 +74,7 @@ public class Cidade implements Serializable {
 
     @Override
     public String toString() {
-        return "enetidade.Cidade[ id=" + id + " ]";
+        return "enetidade.Estado[ id=" + id + " ]";
     }
 
 }
