@@ -1,45 +1,27 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package controle;
 
-import enetidade.Estado;
-import java.util.ArrayList;
+import entidade.Estado;
+import facade.EstadoFacade;
 import java.util.List;
+import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
-/**
- *
- * @author UniCesumar
- */
 @ManagedBean
 @SessionScoped
 public class EstadoControle {
 
-    private Estado estado = new Estado();
-    private List<Estado> lista = new ArrayList<>();
-
-    public List<Estado> getLista() {
-        return lista;
-    }
-
-    public void setLista(List<Estado> lista) {
-        this.lista = lista;
-    }
-
-    public Estado getEstado() {
-        return estado;
-    }
-
-    public void setEstado(Estado estado) {
-        this.estado = estado;
+    private Estado estado;
+    
+    @EJB
+    private EstadoFacade estadoFacade;
+    
+    public List<Estado> listarTodos() {
+        return estadoFacade.listarTodos();
     }
 
     public void salvar() {
-        lista.add(estado);
+        estadoFacade.salvar(estado);
     }
 
     public void novo() {
@@ -47,11 +29,19 @@ public class EstadoControle {
     }
 
     public void excluir(Estado e) {
-        lista.remove(e);
+        estadoFacade.remover(estado);
     }
 
     public void alterar(Estado e) {
         this.estado = e;
     }
+    
+    public Estado getEstado() {
+        return estado;
+    }
 
+    public void setEstado(Estado estado) {
+        this.estado = estado;
+    }
+    
 }

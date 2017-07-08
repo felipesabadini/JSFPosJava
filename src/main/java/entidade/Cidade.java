@@ -1,9 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package enetidade;
+package entidade;
 
 import java.io.Serializable;
 import javax.persistence.Column;
@@ -11,13 +6,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
-/**
- *
- * @author UniCesumar
- */
 @Entity
-public class Estado implements Serializable {
+public class Cidade implements Serializable, BaseEntidade {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -25,8 +17,8 @@ public class Estado implements Serializable {
     private Long id;
     @Column(length = 100, nullable = false)
     private String nome;
-    @Column(length = 2, nullable = false)
-    private String sigla;
+    @ManyToOne
+    private Estado estado;
 
     public String getNome() {
         return nome;
@@ -36,14 +28,15 @@ public class Estado implements Serializable {
         this.nome = nome;
     }
 
-    public String getSigla() {
-        return sigla;
+    public Estado getEstado() {
+        return estado;
     }
 
-    public void setSigla(String sigla) {
-        this.sigla = sigla;
+    public void setEstado(Estado estado) {
+        this.estado = estado;
     }
-
+    
+    @Override
     public Long getId() {
         return id;
     }
@@ -62,10 +55,10 @@ public class Estado implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Estado)) {
+        if (!(object instanceof Cidade)) {
             return false;
         }
-        Estado other = (Estado) object;
+        Cidade other = (Cidade) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -74,7 +67,7 @@ public class Estado implements Serializable {
 
     @Override
     public String toString() {
-        return "enetidade.Estado[ id=" + id + " ]";
+        return "enetidade.Cidade[ id=" + id + " ]";
     }
 
 }

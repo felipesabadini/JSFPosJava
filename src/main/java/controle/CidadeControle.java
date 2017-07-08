@@ -1,37 +1,33 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package controle;
 
-import converter.EstadoConverter;
-import enetidade.Cidade;
+import converter.ConverterGenerico;
+import entidade.Cidade;
+import facade.EstadoFacade;
 import java.util.ArrayList;
 import java.util.List;
+import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
-/**
- *
- * @author UniCesumar
- */
 @ManagedBean
 @SessionScoped
 public class CidadeControle {
 
     private Cidade cidade = new Cidade();
     private List<Cidade> lista = new ArrayList<Cidade>();
-    private EstadoConverter estadoConverter;
+    private ConverterGenerico estadoConverter;
+    @EJB
+    private EstadoFacade estadoFacade;
+    
 
-    public EstadoConverter getEstadoConverter() {
+    public ConverterGenerico getEstadoConverter() {
         if(estadoConverter == null){
-            estadoConverter = new EstadoConverter();
+            estadoConverter = new ConverterGenerico(estadoFacade);
         }
         return estadoConverter;
     }
 
-    public void setEstadoConverter(EstadoConverter estadoConverter) {
+    public void setEstadoConverter(ConverterGenerico estadoConverter) {
         this.estadoConverter = estadoConverter;
     }
 
