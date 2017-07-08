@@ -1,6 +1,5 @@
 package controle;
 
-import entidade.Pessoa;
 import entidade.PessoaFisica;
 import facade.PessoaFisicaFacade;
 import javax.ejb.EJB;
@@ -19,6 +18,10 @@ public class PessoaFisicaControle {
         pessoaFisicaFacade.salvar(pessoaFisica);
     }
     
+    public void novo(){
+        pessoaFisica = new PessoaFisica();
+    }
+    
     public void excluir(PessoaFisica p) {
         pessoaFisicaFacade.remover(p);
     }
@@ -31,7 +34,4 @@ public class PessoaFisicaControle {
         this.pessoaFisica = pessoaFisica;
     }
     
-    public void novo(){
-        pessoaFisica = new PessoaFisica();
-    }
 }
