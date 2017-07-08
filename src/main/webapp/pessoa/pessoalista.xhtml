@@ -1,0 +1,39 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <ui:composition template="/index.xhtml">
+        <ui:define name="boby">
+            <h:form>
+                <h2>Cadastro de Pessoa</h2>                
+                <p:dataTable value="#{pessoaControle.listaTodos()}" var="pessoa" id="tabela"
+                             paginator="true" rows="3"
+                             paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                             rowsPerPageTemplate="3,5,10,15,20,50,100">
+                    <p:column headerText="Nome" filterBy="#{pessoa.nome}" filterMatchMode="contains">
+                        <p:outputLabel value="#{pessoa.nome}"/>
+                    </p:column>
+                    <p:column headerText="Documento" filterBy="#{pessoa.documento}" filterMatchMode="contains">
+                        #{pessoa.documento}
+                    </p:column>
+                    <p:column headerText="Telefone" filterBy="#{pessoa.telefone}" filterMatchMode="contains">
+                        #{pessoa.telefone}
+                    </p:column>
+                    <p:column headerText="Endereço" filterBy="#{pessoa.endereco}" filterMatchMode="contains">
+                        #{pessoa.endereco}
+                    </p:column>
+                    <p:column headerText="Opereações">
+                        <p:commandButton icon="ui-icon-pencil" action="#{pessoaControle.editar(pessoa)}" ajax="false"/>
+                        <p:commandButton icon="ui-icon-closethick" ajax="false" actionListener="#{pessoaControle.excluir(pessoa)}"/>
+                    </p:column>
+                </p:dataTable>
+                <p:commandButton value="Nova PF" action="pessoafisicaedita" ajax="false" actionListener="#{pessoaFisicaControle.novo()}"/>
+                <p:commandButton value="Nova PJ" action="pessoajuridicaedita" ajax="false" actionListener="#{pessoaJuridicaControle.novo()}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+</html>
+
+

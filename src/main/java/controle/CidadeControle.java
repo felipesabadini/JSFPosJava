@@ -20,10 +20,6 @@ public class CidadeControle {
     @EJB
     private EstadoFacade estadoFacade;
 
-    public void testar() {
-        System.out.println("Rsultado: " + cidade.getEstado().getNome());
-    }
-
     public List<Cidade> listaTodos() {
         return cidadeFacade.listaTodos();
     }
@@ -40,8 +36,8 @@ public class CidadeControle {
         cidadeFacade.remover(c);
     }
 
-    public void alterar(Cidade e) {
-        this.cidade = e;
+    public void alterar(Cidade c) {
+        this.cidade = c;
     }
     
     public ConverterGenerico getEstadoConverter() {
