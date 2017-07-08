@@ -12,9 +12,9 @@ public class ConverterGenerico implements Converter {
     public ConverterGenerico(AbstractFacade abstractFacade) {
         this.abstractFacade = abstractFacade;
     }
-  
+    
     @Override
-    public Object getAsObject(FacesContext context, UIComponent component, String value) {
+    public Object getAsObject(FacesContext context, UIComponent component, String value) {        
         return abstractFacade.buscar(Long.parseLong(value));
     }
 

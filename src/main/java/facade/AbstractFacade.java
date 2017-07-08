@@ -7,7 +7,7 @@ import javax.persistence.Query;
 
 public abstract class AbstractFacade<T> implements Serializable {
     private Class<T> entityClass;
-
+    
     public AbstractFacade(Class<T> entityClass) {
         this.entityClass = entityClass;
     }
@@ -26,11 +26,9 @@ public abstract class AbstractFacade<T> implements Serializable {
         return getEntityManager().find(entityClass, id);
     }
     
-    public List<T> listarTodos() {
+    public List<T> listaTodos() {
         Query q = getEntityManager().createQuery("from " + entityClass.getSimpleName());
         return q.getResultList();
     }
-        
-}
     
-
+}

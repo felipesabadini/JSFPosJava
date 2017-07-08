@@ -4,11 +4,11 @@
     <provider>org.hibernate.ejb.HibernatePersistence</provider>
     <jta-data-source>java:app/aulajsfposjavaJNDI</jta-data-source>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
-    <properties>
-      <property name="hibernate.transaction.jta.platform" value="org.hibernate.service.jta.platform.internal.SunOneJtaPlatform" />
-      <property name="hibernate.hdm2ddl.auto" value="update"/>
-      <property name="hibernate.show_sql" value="true"/>
-      <property name="hibernate.format_sql" value="true"/>
+    <properties>      
+      <property name="hibernate.transaction.jta.platform" value="org.hibernate.service.jta.platform.internal.SunOneJtaPlatform"/>
+      <property name="hibernate.hbm2ddl.auto" value="update"/>
+<!--      <property name="hibernate.show_sql" value="true"/>
+      <property name="hibernate.format-sql" value="true"/>-->
     </properties>
   </persistence-unit>
 </persistence>

@@ -17,7 +17,7 @@
                     Estado:<p:selectOneMenu value="#{cidadeControle.cidade.estado}" id="estado" 
                                        required="true" requiredMessage="O estado é obrigatória!"
                                        converter="#{cidadeControle.estadoConverter}">
-                        <f:selectItems value="#{estadoControle.listarTodos()}"
+                        <f:selectItems value="#{estadoControle.listaTodos()}"
                                        var="est"
                                        itemLabel="#{est.nome}"
                                        itemValue="#{est}"/>

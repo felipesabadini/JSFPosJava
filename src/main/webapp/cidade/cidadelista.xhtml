@@ -8,7 +8,7 @@
         <ui:define name="boby">
             <h:form>
                 <h2>Cadastro de Cidade</h2>                
-                <p:dataTable value="#{cidadeControle.lista}" var="cid" id="tabela"
+                <p:dataTable value="#{cidadeControle.listaTodos()}" var="cid" id="tabela"
                              paginator="true" rows="3"
                              paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
                              rowsPerPageTemplate="3,5,10,15,20,50,100">

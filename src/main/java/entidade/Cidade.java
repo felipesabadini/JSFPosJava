@@ -35,7 +35,7 @@ public class Cidade implements Serializable, BaseEntidade {
     public void setEstado(Estado estado) {
         this.estado = estado;
     }
-    
+
     @Override
     public Long getId() {
         return id;

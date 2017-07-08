@@ -9,14 +9,14 @@ import javax.persistence.PersistenceContext;
 public class EstadoFacade extends AbstractFacade<Estado> {
     @PersistenceContext(name = "aulajsfposjavaPU")
     private EntityManager em;
-
+    
     public EstadoFacade() {
         super(Estado.class);
     }
-        
+    
     @Override
     protected EntityManager getEntityManager() {
         return em;
     }
-    
+        
 }

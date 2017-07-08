@@ -9,14 +9,14 @@ import javax.persistence.PersistenceContext;
 public class CidadeFacade extends AbstractFacade<Cidade> {
     @PersistenceContext(name = "aulajsfposjavaPU")
     private EntityManager em;
-
+    
     public CidadeFacade() {
         super(Cidade.class);
     }
-        
+    
     @Override
     protected EntityManager getEntityManager() {
         return em;
     }
-    
+        
 }

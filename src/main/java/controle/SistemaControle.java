@@ -8,7 +8,7 @@ import javax.faces.bean.ManagedBean;
 @ApplicationScoped
 public class SistemaControle {
     private Temas temas = Temas.midnight;
-
+    
     public Temas getTemas() {
         return temas;
     }
@@ -17,8 +17,8 @@ public class SistemaControle {
         this.temas = temas;
     }
     
-    public Temas[] getListaTemas() {
+    public Temas[] getListaTemas(){
         return Temas.values();
     }
-    
+
 }

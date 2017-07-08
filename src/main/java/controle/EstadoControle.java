@@ -12,12 +12,11 @@ import javax.faces.bean.SessionScoped;
 public class EstadoControle {
 
     private Estado estado;
-    
     @EJB
     private EstadoFacade estadoFacade;
     
-    public List<Estado> listarTodos() {
-        return estadoFacade.listarTodos();
+    public List<Estado> listaTodos(){
+        return estadoFacade.listaTodos();
     }
 
     public void salvar() {
@@ -29,7 +28,7 @@ public class EstadoControle {
     }
 
     public void excluir(Estado e) {
-        estadoFacade.remover(estado);
+        estadoFacade.remover(e);
     }
 
     public void alterar(Estado e) {
@@ -43,5 +42,5 @@ public class EstadoControle {
     public void setEstado(Estado estado) {
         this.estado = estado;
     }
-    
+
 }

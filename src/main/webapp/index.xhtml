@@ -17,13 +17,13 @@
                     <p align="right">
                         <table border="0">
                             <tr>
-                                <td align="center" width="2500px"><h2>Sistema JSF UniCesumar</h2></td>
+                                <td align="center" width="2500px"><h2>Sistema JSF Unicesumar</h2></td>
                                 <td align="right">
                                     <p:selectOneMenu value="#{sistemaControle.temas}">
-                                        <f:selectItems value="#{sistemaControle.listaTemas}"
+                                        <f:selectItems value="#{sistemaControle.listaTemas}" 
                                                        var="t"
                                                        itemLabel="#{t.descricao}"
-                                                       itemValue="#{t}" />
+                                                       itemValue="#{t}"/>
                                         <p:ajax event="change" update="@all"/>
                                     </p:selectOneMenu>
                                 </td>
