@@ -11,7 +11,7 @@
     <h:body>
         <h:form>
             <p:layout fullPage="true">
-                <p:layoutUnit position="north" resizable="false"  
+                <p:layoutUnit position="north" resizable="true"  
                               collapsible="true" collapsed="false"  size="90" style="text-align: center"
                               >
                     <p align="right">
@@ -38,6 +38,8 @@
                             <p:menuitem value="Estado" action="/estado/estadolista" ajax="false"/>
                             <p:menuitem value="Cidade" action="/cidade/cidadelista" ajax="false"/>
                             <p:menuitem value="Pessoa" action="/pessoa/pessoalista" ajax="false"/>
+                            <p:menuitem value="Grupo Produto" action="/grupoproduto/grupoprodutolista" ajax="false"/>
+                            <p:menuitem value="Produto" action="/produto/produtolista" ajax="false"/>
                         </p:submenu>
                         <p:submenu label="Movimentos">
                             <p:menuitem value="Compra" action="#" ajax="false"/>

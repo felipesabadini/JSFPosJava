@@ -6,16 +6,11 @@ import javax.persistence.PrimaryKeyJoinColumn;
 
 @Entity
 @PrimaryKeyJoinColumn(name = "id")
-public class PessoaFisica extends Pessoa implements Serializable {
+public class PessoaFisica extends Pessoa implements Serializable{
+
     private String cpf;
-    
     private String rg;
-    
-    @Override
-    public String getDocumento() {
-       return this.cpf;
-    }
-    
+
     public String getCpf() {
         return cpf;
     }
@@ -31,5 +26,10 @@ public class PessoaFisica extends Pessoa implements Serializable {
     public void setRg(String rg) {
         this.rg = rg;
     }
-    
+
+    @Override
+    public String getDocumento() {
+        return this.cpf;
+    }
+
 }

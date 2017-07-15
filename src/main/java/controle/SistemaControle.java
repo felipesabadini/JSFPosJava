@@ -7,8 +7,9 @@ import javax.faces.bean.ManagedBean;
 @ManagedBean
 @ApplicationScoped
 public class SistemaControle {
-    private Temas temas = Temas.midnight;
-    
+
+    private Temas temas = Temas.afterdark;
+
     public Temas getTemas() {
         return temas;
     }

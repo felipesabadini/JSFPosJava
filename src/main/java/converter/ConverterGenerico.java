@@ -6,7 +6,8 @@ import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 
-public class ConverterGenerico implements Converter {
+public class ConverterGenerico implements Converter{
+
     private AbstractFacade abstractFacade;
 
     public ConverterGenerico(AbstractFacade abstractFacade) {

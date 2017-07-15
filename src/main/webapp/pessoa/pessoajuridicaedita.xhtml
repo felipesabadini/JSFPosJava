@@ -13,18 +13,29 @@
                     Nome:<p:inputText value="#{pessoaJuridicaControle.pessoaJuridica.nome}" id="nome"
                                       required="true" requiredMessage="Nome obrigatório!"/>
                     <p:message for="nome"/>
-                    CNPJ:<p:inputText value="#{pessoaJuridicaControle.pessoaJuridica.cnpj}" id="cnpj" 
-                                       required="true" requiredMessage="CNPJ obrigatório!"/>
+                    Endereço:<p:inputText value="#{pessoaJuridicaControle.pessoaJuridica.endereco}" id="end"
+                                      required="true" requiredMessage="Endereço obrigatório!"/>
+                    <p:message for="end"/>
+                    Cidade:<p:autoComplete id="cid"
+                                           value="#{pessoaJuridicaControle.pessoaJuridica.cidade}"
+                                           converter="#{pessoaControle.converterCidade}"
+                                           completeMethod="#{pessoaControle.listaCidades}"
+                                           var="cid"
+                                           itemLabel="#{cid.nome}"
+                                           itemValue="#{cid}"
+                                           forceSelection="true"
+                                           required="true"
+                                           requiredMessage="Cidade obrigatória!"/>
+                    <p:message for="cid"/>
+                    Telefone:<p:inputText value="#{pessoaJuridicaControle.pessoaJuridica.telefone}" id="tel"
+                                      required="true" requiredMessage="Telefone obrigatório!"/>
+                    <p:message for="tel"/>
+                    CNPJ:<p:inputText value="#{pessoaJuridicaControle.pessoaJuridica.cnpj}" id="cnpj"
+                                      required="true" requiredMessage="CNPJ obrigatório!"/>
                     <p:message for="cnpj"/>
-                    IE:<p:inputText value="#{pessoaJuridicaControle.pessoaJuridica.ie}" id="ie" 
-                                       required="true" requiredMessage="IE obrigatório!"/>
+                    IE:<p:inputText value="#{pessoaJuridicaControle.pessoaJuridica.ie}" id="ie"
+                                      required="true" requiredMessage="IE obrigatória!"/>
                     <p:message for="ie"/>
-                    Telefone:<p:inputText value="#{pessoaJuridicaControle.pessoaJuridica.telefone}" id="fone" 
-                                       required="true" requiredMessage="Telefone obrigatório!"/>
-                    <p:message for="fone"/>
-                    Endereço:<p:inputText value="#{pessoaJuridicaControle.pessoaJuridica.endereco}" id="endereco" 
-                                       required="true" requiredMessage="Endereço obrigatório!"/>
-                    <p:message for="endereco"/>
                     <p:commandButton value="Salvar" actionListener="#{pessoaJuridicaControle.salvar()}" action="pessoalista" ajax="false"/>
                     <p:commandButton value="Voltar" action="pessoalista" immediate="true" ajax="false" />
                 </p:panelGrid>

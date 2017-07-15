@@ -13,33 +13,13 @@ import javax.faces.bean.SessionScoped;
 @SessionScoped
 public class CidadeControle {
 
-    private Cidade cidade;
+    private Cidade cidade = new Cidade();
     private ConverterGenerico estadoConverter;
     @EJB
-    private CidadeFacade cidadeFacade;
-    @EJB
     private EstadoFacade estadoFacade;
+    @EJB
+    private CidadeFacade cidadeFacade;
 
-    public List<Cidade> listaTodos() {
-        return cidadeFacade.listaTodos();
-    }
-    
-    public void salvar() {
-        cidadeFacade.salvar(cidade);
-    }
-
-    public void novo() {
-        cidade = new Cidade();
-    }
-
-    public void excluir(Cidade c) {
-        cidadeFacade.remover(c);
-    }
-
-    public void alterar(Cidade c) {
-        this.cidade = c;
-    }
-    
     public ConverterGenerico getEstadoConverter() {
         if(estadoConverter == null){
             estadoConverter = new ConverterGenerico(estadoFacade);
@@ -50,13 +30,33 @@ public class CidadeControle {
     public void setEstadoConverter(ConverterGenerico estadoConverter) {
         this.estadoConverter = estadoConverter;
     }
-    
+
+    public List<Cidade> getListaTodos() {
+        return cidadeFacade.listaTodos();
+    }
+
     public Cidade getCidade() {
         return cidade;
     }
 
     public void setCidade(Cidade cidade) {
         this.cidade = cidade;
+    }
+
+    public void salvar() {
+        cidadeFacade.salvar(cidade);
+    }
+
+    public void novo() {
+        cidade = new Cidade();
+    }
+
+    public void excluir(Cidade cid) {
+        cidadeFacade.remover(cid);
+    }
+
+    public void alterar(Cidade cid) {
+        this.cidade = cid;
     }
 
 }

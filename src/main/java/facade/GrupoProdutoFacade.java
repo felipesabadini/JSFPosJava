@@ -1,12 +1,12 @@
 package facade;
 
-import entidade.Estado;
+import entidade.GrupoProduto;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 @Stateless
-public class EstadoFacade extends AbstractFacade<Estado>{
+public class GrupoProdutoFacade extends AbstractFacade<GrupoProduto>{
 
     @PersistenceContext(name = "aulajsfposjavaPU")
     private EntityManager em;
@@ -16,7 +16,7 @@ public class EstadoFacade extends AbstractFacade<Estado>{
         return em;
     }
     
-    public EstadoFacade(){
-        super(Estado.class);
+    public GrupoProdutoFacade(){
+        super(GrupoProduto.class);
     }
 }

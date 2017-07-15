@@ -15,22 +15,25 @@
                     <p:column headerText="Nome" filterBy="#{pessoa.nome}" filterMatchMode="contains">
                         <p:outputLabel value="#{pessoa.nome}"/>
                     </p:column>
-                    <p:column headerText="Documento" filterBy="#{pessoa.documento}" filterMatchMode="contains">
-                        #{pessoa.documento}
+                    <p:column headerText="Endereço" filterBy="#{pessoa.endereco}" filterMatchMode="contains">
+                        #{pessoa.endereco}
+                    </p:column>
+                    <p:column headerText="Cidade" filterBy="#{pessoa.cidade.nome}" filterMatchMode="contains">
+                        #{pessoa.cidade.nome}
                     </p:column>
                     <p:column headerText="Telefone" filterBy="#{pessoa.telefone}" filterMatchMode="contains">
                         #{pessoa.telefone}
                     </p:column>
-                    <p:column headerText="Endereço" filterBy="#{pessoa.endereco}" filterMatchMode="contains">
-                        #{pessoa.endereco}
+                    <p:column headerText="Documento" filterBy="#{pessoa.documento}" filterMatchMode="contains">
+                        #{pessoa.documento}
                     </p:column>
                     <p:column headerText="Opereações">
-                        <p:commandButton icon="ui-icon-pencil" action="#{pessoaControle.editar(pessoa)}" ajax="false"/>
+                        <p:commandButton icon="ui-icon-pencil" action="#{pessoaControle.editar(pessoa)}" />
                         <p:commandButton icon="ui-icon-closethick" ajax="false" actionListener="#{pessoaControle.excluir(pessoa)}"/>
                     </p:column>
                 </p:dataTable>
-                <p:commandButton value="Nova PF" action="pessoafisicaedita" ajax="false" actionListener="#{pessoaFisicaControle.novo()}"/>
-                <p:commandButton value="Nova PJ" action="pessoajuridicaedita" ajax="false" actionListener="#{pessoaJuridicaControle.novo()}"/>
+                <p:commandButton value="Nova Pessoa Física" action="pessoafisicaedita" ajax="false" actionListener="#{pessoaFisicaControle.novo()}"/>
+                <p:commandButton value="Nova Pessoa Jurídica" action="pessoajuridicaedita" ajax="false" actionListener="#{pessoaJuridicaControle.novo()}"/>
             </h:form>
         </ui:define>
     </ui:composition>

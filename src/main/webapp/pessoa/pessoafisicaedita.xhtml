@@ -13,18 +13,29 @@
                     Nome:<p:inputText value="#{pessoaFisicaControle.pessoaFisica.nome}" id="nome"
                                       required="true" requiredMessage="Nome obrigatório!"/>
                     <p:message for="nome"/>
-                    CPF:<p:inputText value="#{pessoaFisicaControle.pessoaFisica.cpf}" id="cpf" 
-                                       required="true" requiredMessage="CPF obrigatório!"/>
+                    Endereço:<p:inputText value="#{pessoaFisicaControle.pessoaFisica.endereco}" id="end"
+                                      required="true" requiredMessage="Endereço obrigatório!"/>
+                    <p:message for="end"/>
+                    Cidade:<p:autoComplete id="cid"
+                                           value="#{pessoaFisicaControle.pessoaFisica.cidade}"
+                                           converter="#{pessoaControle.converterCidade}"
+                                           completeMethod="#{pessoaControle.listaCidades}"
+                                           var="cid"
+                                           itemLabel="#{cid.nome}"
+                                           itemValue="#{cid}"
+                                           forceSelection="true"
+                                           required="true"
+                                           requiredMessage="Cidade obrigatória!"/>
+                    <p:message for="cid"/>
+                    Telefone:<p:inputText value="#{pessoaFisicaControle.pessoaFisica.telefone}" id="tel"
+                                      required="true" requiredMessage="Telefone obrigatório!"/>
+                    <p:message for="tel"/>
+                    CPF:<p:inputText value="#{pessoaFisicaControle.pessoaFisica.cpf}" id="cpf"
+                                      required="true" requiredMessage="CPF obrigatório!"/>
                     <p:message for="cpf"/>
-                    RG:<p:inputText value="#{pessoaFisicaControle.pessoaFisica.rg}" id="rg" 
-                                       required="true" requiredMessage="RG obrigatório!"/>
+                    RG:<p:inputText value="#{pessoaFisicaControle.pessoaFisica.rg}" id="rg"
+                                      required="true" requiredMessage="RG obrigatório!"/>
                     <p:message for="rg"/>
-                    Telefone:<p:inputText value="#{pessoaFisicaControle.pessoaFisica.telefone}" id="fone" 
-                                       required="true" requiredMessage="Telefone obrigatório!"/>
-                    <p:message for="fone"/>
-                    Endereço:<p:inputText value="#{pessoaFisicaControle.pessoaFisica.endereco}" id="endereco" 
-                                       required="true" requiredMessage="Endereço obrigatório!"/>
-                    <p:message for="endereco"/>
                     <p:commandButton value="Salvar" actionListener="#{pessoaFisicaControle.salvar()}" action="pessoalista" ajax="false"/>
                     <p:commandButton value="Voltar" action="pessoalista" immediate="true" ajax="false" />
                 </p:panelGrid>

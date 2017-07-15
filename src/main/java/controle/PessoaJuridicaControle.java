@@ -9,23 +9,11 @@ import javax.faces.bean.SessionScoped;
 @ManagedBean
 @SessionScoped
 public class PessoaJuridicaControle {
+
     private PessoaJuridica pessoaJuridica;
-    
     @EJB
     private PessoaJuridicaFacade pessoaJuridicaFacade;
-    
-    public void salvar() {
-        pessoaJuridicaFacade.salvar(pessoaJuridica);
-    }
-    
-    public void excluir(PessoaJuridica p) {
-        pessoaJuridicaFacade.remover(p);
-    }
-    
-    public void novo(){
-        pessoaJuridica = new PessoaJuridica();
-    }
-
+   
     public PessoaJuridica getPessoaJuridica() {
         return pessoaJuridica;
     }
@@ -33,5 +21,17 @@ public class PessoaJuridicaControle {
     public void setPessoaJuridica(PessoaJuridica pessoaJuridica) {
         this.pessoaJuridica = pessoaJuridica;
     }
+
+    public void salvar(){
+        pessoaJuridicaFacade.salvar(pessoaJuridica);
+    }
     
+    public void excluir(PessoaJuridica pj){
+        pessoaJuridicaFacade.remover(pj);
+    }
+    
+    public void novo(){
+        pessoaJuridica = new PessoaJuridica();
+    }
+
 }

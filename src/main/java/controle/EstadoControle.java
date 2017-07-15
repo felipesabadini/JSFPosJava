@@ -19,6 +19,14 @@ public class EstadoControle {
         return estadoFacade.listaTodos();
     }
 
+    public Estado getEstado() {
+        return estado;
+    }
+
+    public void setEstado(Estado estado) {
+        this.estado = estado;
+    }
+
     public void salvar() {
         estadoFacade.salvar(estado);
     }
@@ -33,14 +41,6 @@ public class EstadoControle {
 
     public void alterar(Estado e) {
         this.estado = e;
-    }
-    
-    public Estado getEstado() {
-        return estado;
-    }
-
-    public void setEstado(Estado estado) {
-        this.estado = estado;
     }
 
 }

@@ -7,15 +7,10 @@ import javax.persistence.PrimaryKeyJoinColumn;
 @Entity
 @PrimaryKeyJoinColumn(name = "id")
 public class PessoaJuridica extends Pessoa implements Serializable {
+
     private String cnpj;
-    
     private String ie;
-    
-    @Override
-    public String getDocumento() {
-       return this.cnpj;
-    }
-    
+
     public String getCnpj() {
         return cnpj;
     }
@@ -31,5 +26,10 @@ public class PessoaJuridica extends Pessoa implements Serializable {
     public void setIe(String ie) {
         this.ie = ie;
     }
-    
+
+    @Override
+    public String getDocumento() {
+        return this.cnpj;
+    }
+
 }

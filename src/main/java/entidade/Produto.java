@@ -1,23 +1,37 @@
 package entidade;
 
 import java.io.Serializable;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 @Entity
-public class Estado implements Serializable, BaseEntidade{
+public class Produto implements Serializable {
 
     private static final long serialVersionUID = 1L;
+    
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    @Column(length = 100, nullable = false)
+    
     private String nome;
-    @Column(length = 2, nullable = false)
-    private String sigla;
+    
+    private Double preco;
+    
+    private Double estoque;
+    
+    @ManyToOne
+    private GrupoProduto grupoProduto;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public String getNome() {
         return nome;
@@ -27,22 +41,31 @@ public class Estado implements Serializable, BaseEntidade{
         this.nome = nome;
     }
 
-    public String getSigla() {
-        return sigla;
+    public Double getPreco() {
+        return preco;
     }
 
-    public void setSigla(String sigla) {
-        this.sigla = sigla;
+    public void setPreco(Double preco) {
+        this.preco = preco;
+    }
+
+    public Double getEstoque() {
+        return estoque;
+    }
+
+    public void setEstoque(Double estoque) {
+        this.estoque = estoque;
+    }
+
+    public GrupoProduto getGrupoProduto() {
+        return grupoProduto;
+    }
+
+    public void setGrupoProduto(GrupoProduto grupoProduto) {
+        this.grupoProduto = grupoProduto;
     }
     
-    @Override
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
+    
 
     @Override
     public int hashCode() {
@@ -53,10 +76,10 @@ public class Estado implements Serializable, BaseEntidade{
 
     @Override
     public boolean equals(Object object) {
-        if (!(object instanceof Estado)) {
+        if (!(object instanceof Produto)) {
             return false;
         }
-        Estado other = (Estado) object;
+        Produto other = (Produto) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -65,7 +88,7 @@ public class Estado implements Serializable, BaseEntidade{
 
     @Override
     public String toString() {
-        return "enetidade.Estado[ id=" + id + " ]";
+        return "entidade.Produto[ id=" + id + " ]";
     }
-
+    
 }
