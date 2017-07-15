@@ -8,7 +8,7 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
 @Entity
-public class Produto implements Serializable {
+public class Produto implements Serializable, BaseEntidade {
 
     private static final long serialVersionUID = 1L;
     
@@ -25,6 +25,7 @@ public class Produto implements Serializable {
     @ManyToOne
     private GrupoProduto grupoProduto;
 
+    @Override
     public Long getId() {
         return id;
     }

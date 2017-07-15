@@ -1,6 +1,7 @@
 package controle;
 
 import converter.ConverterGenerico;
+import converter.MoneyConverter;
 import entidade.GrupoProduto;
 import entidade.Produto;
 import facade.GrupoProdutoFacade;
@@ -19,12 +20,12 @@ public class ProdutoControle {
     
     @EJB
     private GrupoProdutoFacade grupoProdutoFacade;
-    
-    private GrupoProduto grupoProduto;
-    
+       
     private Produto produto;
     
     private ConverterGenerico converterGrupoProduto;
+    
+    private MoneyConverter moneyConverter;
     
     public List<Produto> listaTodos(){
         return produtoFacade.listaTodos();
@@ -57,14 +58,6 @@ public class ProdutoControle {
     public void setProduto(Produto produto) {
         this.produto = produto;
     }
-
-    public GrupoProduto getGrupoProduto() {
-        return grupoProduto;
-    }
-
-    public void setGrupoProduto(GrupoProduto grupoProduto) {
-        this.grupoProduto = grupoProduto;
-    }
     
     public ConverterGenerico getConverterGrupoProduto() {
         if (converterGrupoProduto == null) {
@@ -76,5 +69,19 @@ public class ProdutoControle {
     public void setConverterCidade(ConverterGenerico converterGrupoProduto) {
         this.converterGrupoProduto = converterGrupoProduto;
     }
+
+    public MoneyConverter getMoneyConverter() {
+        if (moneyConverter == null) {
+            moneyConverter = new MoneyConverter();
+        }
+        return moneyConverter;
+    }
+
+    public void setMoneyConverter(MoneyConverter moneyConverter) {
+        this.moneyConverter = moneyConverter;
+    }
+    
+    
+    
 
 }

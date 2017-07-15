@@ -11,15 +11,20 @@ import javax.persistence.ManyToOne;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
-public abstract class Pessoa implements Serializable {
+public abstract class Pessoa implements Serializable, BaseEntidade {
 
     private static final long serialVersionUID = 1L;
+    
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    
     private String nome;
+    
     private String telefone;
+    
     private String endereco;
+    
     @ManyToOne
     private Cidade cidade;
 
@@ -56,7 +61,8 @@ public abstract class Pessoa implements Serializable {
     public void setEndereco(String endereco) {
         this.endereco = endereco;
     }
-
+    
+    @Override
     public Long getId() {
         return id;
     }

@@ -19,13 +19,13 @@
                         <p:outputLabel value="#{prod.grupoProduto.nome}"/>
                     </p:column>
                     <p:column headerText="Preço" filterBy="#{prod.preco}" filterMatchMode="contains">
-                        #{prod.preco}
+                        <h:outputText value="#{prod.preco}" converter="#{produtoControle.moneyConverter}"/>
                     </p:column>
                     <p:column headerText="Estoque" filterBy="#{prod.estoque}" filterMatchMode="contains">
                         #{prod.estoque}
                     </p:column>
                     <p:column headerText="Opereações">
-                        <p:commandButton icon="ui-icon-pencil" action="#{produtoControle.alterar(prod)}" />
+                        <p:commandButton icon="ui-icon-pencil" action="produtoedita" ajax="false" actionListener="#{produtoControle.alterar(prod)}" />
                         <p:commandButton icon="ui-icon-closethick" ajax="false" actionListener="#{produtoControle.excluir(prod)}"/>
                     </p:column>
                 </p:dataTable>

@@ -7,6 +7,30 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
         <title>Sistema Pós Unicesumar</title>
+        
+        <h:outputScript library="js" name="/mascaraMonetaria/Parsers.js" />
+        <h:outputScript library="js" name="/mascaraMonetaria/JavaScriptUtil.js" />
+        <h:outputScript library="js" name="/mascaraMonetaria/InputMask.js" />   
+        <script language="JavaScript">
+            function mascaraMonetaria(arg) {
+                //Set up the NumberMasks
+                var separadorDecimal = ",";
+                var separadorMilhar = ".";
+
+                var formato = new NumberParser(2, separadorDecimal, separadorMilhar, true);
+                formato.currencySymbol = "R$";
+                formato.useCurrency = true;
+                formato.allowNegative = false;
+                formato.currencyInside = true;
+
+                if (arg.className.indexOf('mascaraMonetaria') == -1) {
+                    var mascaraMonetariaFinal = new NumberMask(formato, arg, 20);
+                    mascaraMonetariaFinal.leftToRight = true;
+                    arg.setAttribute('autocomplete', 'off');
+                    arg.className += ' mascaraMonetaria';
+                }
+            }
+        </script> 
     </h:head>
     <h:body>
         <h:form>
@@ -43,7 +67,7 @@
                         </p:submenu>
                         <p:submenu label="Movimentos">
                             <p:menuitem value="Compra" action="#" ajax="false"/>
-                            <p:menuitem value="Venda" action="#" ajax="false"/>
+                            <p:menuitem value="Venda" action="/venda/vendalista" ajax="false"/>
                         </p:submenu>
                         <p:submenu label="Relatórios">
                             <p:menuitem value="Estado" action="#" ajax="false"/>

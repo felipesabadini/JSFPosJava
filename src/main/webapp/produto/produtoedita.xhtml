@@ -13,8 +13,8 @@
                     Nome:<p:inputText value="#{produtoControle.produto.nome}" id="nome"
                                       required="true" requiredMessage="Nome obrigatório!"/>
                     <p:message for="nome"/>
-                    Grupo Produto:<p:autoComplete id="cid"
-                                                  value="#{produtoControle.grupoProduto.nome}"
+                    Grupo Produto:<p:autoComplete id="grupo"
+                                                  value="#{produtoControle.produto.grupoProduto}"
                                                   converter="#{produtoControle.converterGrupoProduto}"
                                                   completeMethod="#{produtoControle.listaGrupoProduto}"
                                                   var="gp"
@@ -23,9 +23,11 @@
                                                   forceSelection="true"
                                                   required="true"
                                                   requiredMessage="Grupo Produto obrigatório!"/>
-                    <p:message for="gp"/>
+                    <p:message for="grupo"/>
                     Preço:<p:inputText value="#{produtoControle.produto.preco}" id="preco"
-                                      required="true" requiredMessage="Preco obrigatório!"/>
+                                       converter="#{produtoControle.moneyConverter}"
+                                       onkeydown="mascaraMonetaria(this)"
+                                       required="true" requiredMessage="Preço obrigatório!"/>
                     <p:message for="preco"/>
                     Estoque:<p:inputText value="#{produtoControle.produto.estoque}" id="estoque"
                                       required="true" requiredMessage="Estoque obrigatório!"/>
