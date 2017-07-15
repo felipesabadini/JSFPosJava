@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <ui:composition template="/index.xhtml">
+        <ui:define name="boby">
+            <h:form>
+                <h2>Movimento de Contas a Receber</h2>                
+                <p:dataTable value="#{contasReceberControle.listaTodos()}" var="cr" id="tabela"
+                             paginator="true" rows="3"
+                             paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                             rowsPerPageTemplate="3,5,10,15,20,50,100">
+                    <p:column headerText="Data Lançamento" filterBy="#{cr.dataLancamento}" filterMatchMode="contains">
+                        <p:outputLabel value="#{cr.dataLancamento}">
+                            <f:convertDateTime pattern="dd/MM/yyyy" locale="pt_BR"/>
+                        </p:outputLabel>
+                    </p:column>
+                    <p:column headerText="Data Vencmento" filterBy="#{cr.dataVencimento}" filterMatchMode="contains">
+                        <p:outputLabel value="#{cr.dataVencimento}">
+                            <f:convertDateTime pattern="dd/MM/yyyy" locale="pt_BR"/>
+                        </p:outputLabel>
+                    </p:column>
+                    <p:column headerText="Valor" filterBy="#{cr.valor}" filterMatchMode="contains">
+                        #{cr.valor}
+                    </p:column>
+                    <p:column headerText="Opereações">
+                        <p:commandButton icon="ui-icon-pencil" action="contasreceberedita" actionListener="#{contasReceberControle.alterar(cr)}"/>
+                        <p:commandButton icon="ui-icon-closethick" ajax="false" actionListener="#{contasReceberControle.excluir(cr)}"/>
+                    </p:column>
+                </p:dataTable>
+                <p:commandButton value="Nova Contas a Receber" action="contasreceberedita" ajax="false" actionListener="#{contasReceberControle.novo()}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+</html>
+
+

@@ -1,5 +1,6 @@
 package facade;
 
+import entidade.ContasReceber;
 import entidade.ItensVenda;
 import entidade.Produto;
 import entidade.Venda;
@@ -25,7 +26,7 @@ public class VendaFacade extends AbstractFacade<Venda>{
     @Override
     public void salvar(Venda venda) {
         baixarEstoque(venda);
-        em.merge(venda);
+        geraContasReceber(em.merge(venda));
     }
     
     private void baixarEstoque(Venda venda){
@@ -34,6 +35,15 @@ public class VendaFacade extends AbstractFacade<Venda>{
             p.setEstoque(p.getEstoque() - it.getQuantidade());
             em.merge(p);
         }
+    }
+    
+    private void geraContasReceber(Venda venda) {
+        ContasReceber cr = new ContasReceber();
+        cr.setDataLancamento(venda.getDataVenda());
+        cr.setDataVencimento(venda.getDataVenda());
+        cr.setValor(venda.getValorTotal());
+        cr.setVenda(venda);
+        em.merge(cr);
     }
     
 }

@@ -11,9 +11,10 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
-public class ContasReceber implements Serializable {
+public class ContasReceber implements Serializable, BaseEntidade {
 
     private static final long serialVersionUID = 1L;
+    
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
@@ -29,6 +30,7 @@ public class ContasReceber implements Serializable {
     @ManyToOne
     private Venda venda;
 
+    @Override
     public Long getId() {
         return id;
     }
@@ -68,8 +70,7 @@ public class ContasReceber implements Serializable {
     public void setVenda(Venda venda) {
         this.venda = venda;
     }
-    
-    
+        
     @Override
     public int hashCode() {
         int hash = 0;

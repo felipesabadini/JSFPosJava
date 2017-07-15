@@ -24,10 +24,6 @@
                     <p:column headerText="Total" filterBy="#{ven.valorTotal}" filterMatchMode="contains">
                         <h:outputText value="#{ven.valorTotal}" converter="#{vendaControle.moneyConverter}"/>
                     </p:column>
-                    <p:column headerText="Opereações">
-                        <p:commandButton icon="ui-icon-pencil" action="vendaedita" actionListener="#{vendaControle.alterar(ven)}"/>
-                        <p:commandButton icon="ui-icon-closethick" ajax="false" actionListener="#{vendaControle.excluir(ven)}"/>
-                    </p:column>
                 </p:dataTable>
                 <p:commandButton value="Nova venda" action="vendaedita" ajax="false" actionListener="#{vendaControle.novo()}"/>
             </h:form>
