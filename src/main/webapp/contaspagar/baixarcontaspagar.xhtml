@@ -28,7 +28,7 @@
                         <f:convertDateTime pattern="dd/MM/yyyy" locale="pt_BR"/>
                     </p:calendar>
                     Forma Pagamento: <p:inputText value="#{contasPagarControle.baixaContasPagar.formaPagamento}"/>
-                    valor: <p:inputText value="#{contasPagarControle.baixaContasPagar.valor}" converter="#{contasPagarControle.moneyConverter}"/>
+                    Valor: <p:inputText value="#{contasPagarControle.baixaContasPagar.valor}" converter="#{contasPagarControle.moneyConverter}"/>
                     <p:commandButton value="Baixar" ajax="false" actionListener="#{contasPagarControle.baixar}"/>
                 </p:panelGrid>
                 <p:dataTable value="#{contasPagarControle.contasPagar.listaBaixa}" var="b" emptyMessage="Nenhuma baixa realizada!">

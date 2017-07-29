@@ -3,16 +3,21 @@ package controle;
 import com.ocpsoft.pretty.faces.annotation.URLAction;
 import com.ocpsoft.pretty.faces.annotation.URLMapping;
 import com.ocpsoft.pretty.faces.annotation.URLMappings;
+import converter.ConverterGenerico;
 import converter.MoneyConverter;
 import entidade.BaixaContasPagar;
 import entidade.ContasPagar;
+import entidade.PessoaJuridica;
 import facade.ContasPagarFacade;
+import facade.PessoaJuridicaFacade;
 import java.io.Serializable;
 import java.util.List;
 import java.util.Objects;
 import javax.ejb.EJB;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
 
 @ManagedBean
 @SessionScoped
@@ -34,6 +39,9 @@ public class ContasPagarControle implements Serializable {
     @EJB
     private ContasPagarFacade contasPagarFacade;
     
+    @EJB
+    private PessoaJuridicaFacade pessoaJuridicaFacade;
+    
     private String id;
 
     private ContasPagar contasPagar;
@@ -41,9 +49,15 @@ public class ContasPagarControle implements Serializable {
     private BaixaContasPagar baixaContasPagar;
     
     private MoneyConverter moneyConverter;
+    
+    private ConverterGenerico converterPessoa;
 
     public List<ContasPagar> listaTodos() {
         return contasPagarFacade.listaTodos();
+    }
+    
+    public List<PessoaJuridica> listaPessoasJuridica(String parte) {
+        return pessoaJuridicaFacade.listaFiltrando(parte, "nome");
     }
 
     public void salvar() {
@@ -69,6 +83,13 @@ public class ContasPagarControle implements Serializable {
         this.contasPagar = contasPagarFacade.buscar(Long.parseLong(id));
     }
     
+    public ConverterGenerico getConverterPessoa() {
+        if (converterPessoa == null) {
+            converterPessoa = new ConverterGenerico(pessoaJuridicaFacade);
+        }
+        return converterPessoa;
+    }
+    
     public String getId() {
         return id;
     }
@@ -86,9 +107,16 @@ public class ContasPagarControle implements Serializable {
     }
 
     public void baixar(){
-        baixaContasPagar.setContasPagar(contasPagar);
-        contasPagar.getListaBaixa().add(baixaContasPagar);
-        baixaContasPagar = new BaixaContasPagar();
+        Double valor = contasPagar.getValorBaixado() + baixaContasPagar.getValor();
+        if(valor <= contasPagar.getValor()) {
+            baixaContasPagar.setContasPagar(contasPagar);
+            contasPagar.getListaBaixa().add(baixaContasPagar);
+            baixaContasPagar = new BaixaContasPagar();
+        } else {
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Valor baixado é maior que o valor da parcela!"));
+        }
+        
+        
     }
     
     public void removerBaixa(BaixaContasPagar b){

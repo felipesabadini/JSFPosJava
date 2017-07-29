@@ -45,6 +45,10 @@ public class ContasPagar implements Serializable, BaseEntidade {
             orphanRemoval = true)
     private List<BaixaContasPagar> listaBaixa;
 
+    public ContasPagar() {
+        this.parcela = 1;
+    }
+
     public Double getValorBaixado(){
         Double total = 0d;
         for(BaixaContasPagar b : listaBaixa){
