@@ -11,29 +11,25 @@ import javax.persistence.ManyToOne;
 public class ItensVenda implements Serializable {
 
     private static final long serialVersionUID = 1L;
+    
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    
+    private Double quantidade;
+    
+    private Double preco;
     
     @ManyToOne
     private Produto produto;
     
     @ManyToOne
     private Venda venda;
-    
-    private Double quantidade;
-    
-    private Double preco;
-    
 
-    public Long getId() {
-        return id;
+    public Double getSubTotal(){
+        return quantidade * preco;
     }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
+    
     public Produto getProduto() {
         return produto;
     }
@@ -65,11 +61,15 @@ public class ItensVenda implements Serializable {
     public void setPreco(Double preco) {
         this.preco = preco;
     }
-   
-    public Double getSubTotal() {
-        return quantidade * preco;
+
+    public Long getId() {
+        return id;
     }
-    
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
     @Override
     public int hashCode() {
         int hash = 0;

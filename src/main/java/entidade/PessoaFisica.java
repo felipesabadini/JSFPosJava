@@ -1,14 +1,17 @@
 package entidade;
 
+import com.ocpsoft.pretty.faces.annotation.URLMapping;
+import com.ocpsoft.pretty.faces.annotation.URLMappings;
 import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.PrimaryKeyJoinColumn;
 
 @Entity
 @PrimaryKeyJoinColumn(name = "id")
-public class PessoaFisica extends Pessoa implements Serializable{
+public class PessoaFisica extends Pessoa implements Serializable {
 
     private String cpf;
+    
     private String rg;
 
     public String getCpf() {

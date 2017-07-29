@@ -6,7 +6,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 @Stateless
-public class GrupoProdutoFacade extends AbstractFacade<GrupoProduto>{
+public class GrupoProdutoFacade extends AbstractFacade<GrupoProduto> {
 
     @PersistenceContext(name = "aulajsfposjavaPU")
     private EntityManager em;

@@ -61,7 +61,7 @@ public abstract class Pessoa implements Serializable, BaseEntidade {
     public void setEndereco(String endereco) {
         this.endereco = endereco;
     }
-    
+
     @Override
     public Long getId() {
         return id;
@@ -80,6 +80,7 @@ public abstract class Pessoa implements Serializable, BaseEntidade {
 
     @Override
     public boolean equals(Object object) {
+        // TODO: Warning - this method won't work in the case the id fields are not set
         if (!(object instanceof Pessoa)) {
             return false;
         }

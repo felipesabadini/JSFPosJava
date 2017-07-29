@@ -16,7 +16,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
-public class Venda implements Serializable {
+public class Compra implements Serializable {
 
     private static final long serialVersionUID = 1L;
     
@@ -25,20 +25,20 @@ public class Venda implements Serializable {
     private Long id;
     
     @Temporal(TemporalType.DATE)
-    private Date dataVenda;
+    private Date dataCompra;
     
     private Double valorTotal;
     
     private Integer numeroParcelas;
     
     @ManyToOne
-    private Pessoa pessoa;
+    private PessoaJuridica pessoaJuridica;
     
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "venda", orphanRemoval = true)
-    private List<ItensVenda> itensVendas;
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "compra", orphanRemoval = true)
+    private List<ItensCompra> itensCompras;
     
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "venda", orphanRemoval = true)
-    private List<ContasReceber> listaContasReceber;
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "compra", orphanRemoval = true)
+    private List<ContasPagar> listaContasPagar;
 
     public Integer getNumeroParcelas() {
         return numeroParcelas;
@@ -48,52 +48,51 @@ public class Venda implements Serializable {
         this.numeroParcelas = numeroParcelas;
     }
     
-
-    public List<ContasReceber> getListaContasReceber() {
-        return listaContasReceber;
+    public List<ContasPagar> getListaContasPagar() {
+        return listaContasPagar;
     }
 
-    public void setListaContasReceber(List<ContasReceber> listaContasReceber) {
-        this.listaContasReceber = listaContasReceber;
+    public void setListaContasPagar(List<ContasPagar> listaContasPagar) {
+        this.listaContasPagar = listaContasPagar;
     }
     
-    public Venda() {
-        dataVenda = new Date();
-        itensVendas = new ArrayList<ItensVenda>();
-        listaContasReceber = new ArrayList<ContasReceber>();
+    public Compra() {
+        dataCompra = new Date();
+        itensCompras = new ArrayList<>();
+        listaContasPagar = new ArrayList<>();
     }
 
-    public Date getDataVenda() {
-        return dataVenda;
+    public Date getDataCompra() {
+        return dataCompra;
     }
 
-    public void setDataVenda(Date dataVenda) {
-        this.dataVenda = dataVenda;
+    public void setDataCompra(Date dataCompra) {
+        this.dataCompra = dataCompra;
     }
 
     public Double getValorTotal() {
         Double valor = 0d;
-        for(ItensVenda it : itensVendas){
+        for(ItensCompra it : itensCompras){
             valor = valor + it.getSubTotal();
         }
         this.valorTotal = valor;
         return valorTotal;
     }
 
-    public Pessoa getPessoa() {
-        return pessoa;
+    public Pessoa getPessoaJuridica() {
+        return pessoaJuridica;
     }
 
-    public void setPessoa(Pessoa pessoa) {
-        this.pessoa = pessoa;
+    public void setPessoaJuridica(PessoaJuridica pessoaJuridica) {
+        this.pessoaJuridica = pessoaJuridica;
     }
 
-    public List<ItensVenda> getItensVendas() {
-        return itensVendas;
+    public List<ItensCompra> getItensCompras() {
+        return itensCompras;
     }
 
-    public void setItensVendas(List<ItensVenda> itensVendas) {
-        this.itensVendas = itensVendas;
+    public void setItensCompras(List<ItensCompra> itensCompras) {
+        this.itensCompras = itensCompras;
     }
 
     public Long getId() {
@@ -114,10 +113,10 @@ public class Venda implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Venda)) {
+        if (!(object instanceof Compra)) {
             return false;
         }
-        Venda other = (Venda) object;
+        Compra other = (Compra) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -126,7 +125,7 @@ public class Venda implements Serializable {
 
     @Override
     public String toString() {
-        return "entidade.Venda[ id=" + id + " ]";
+        return "entidade.Compra[ id=" + id + " ]";
     }
 
 }

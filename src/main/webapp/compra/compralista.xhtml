@@ -8,28 +8,28 @@
     <ui:composition template="/index.xhtml">
         <ui:define name="boby">
             <h:form>
-                <h2>Movimentação de Venda</h2>                
-                <p:dataTable value="#{vendaControle.listaTodos()}" var="ve" id="tabela"
+                <h2>Movimentação de Compra</h2>                
+                <p:dataTable value="#{compraControle.listaTodos()}" var="com" id="tabela"
                              paginator="true" rows="3"
                              paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
                              rowsPerPageTemplate="3,5,10,15,20,50,100">
-                    <p:column headerText="Data Venda" filterBy="#{ve.dataVenda}" filterMatchMode="contains">
-                        <p:outputLabel value="#{ve.dataVenda}">
+                    <p:column headerText="Data Compra" filterBy="#{com.dataCompra}" filterMatchMode="contains">
+                        <p:outputLabel value="#{com.dataCompra}">
                             <f:convertDateTime pattern="dd/MM/yyyy" locale="pt_BR"/>
                         </p:outputLabel>
                     </p:column>
-                    <p:column headerText="Cliente" filterBy="#{ve.pessoa.nome}" filterMatchMode="contains">
-                        #{ve.pessoa.nome}
+                    <p:column headerText="Cliente" filterBy="#{com.pessoaJuridica.nome}" filterMatchMode="contains">
+                        #{com.pessoaJuridica.nome}
                     </p:column>
-                    <p:column headerText="Total" filterBy="#{ve.valorTotal}" filterMatchMode="contains">
-                        <h:outputText value="#{ve.valorTotal}" converter="#{vendaControle.moneyConverter}"/>
+                    <p:column headerText="Total" filterBy="#{com.valorTotal}" filterMatchMode="contains">
+                        <h:outputText value="#{com.valorTotal}" converter="#{compraControle.moneyConverter}"/>
                     </p:column>
                     <p:column headerText="Opereações">
-                        <p:commandButton icon="ui-icon-pencil" action="vendaedita" actionListener="#{vendaControle.alterar(ve)}"/>
-                        <p:commandButton icon="ui-icon-closethick" ajax="false" actionListener="#{vendaControle.excluir(ve)}"/>
+                        <p:commandButton icon="ui-icon-pencil" action="compraedita.xhtml?faces-redirect=true" actionListener="#{compraControle.alterar(com)}"/>
+                        <p:commandButton icon="ui-icon-closethick" ajax="false" actionListener="#{compraControle.excluir(com)}"/>
                     </p:column>
                 </p:dataTable>
-                <p:commandButton value="Nova Venda" action="vendaedita" ajax="false" actionListener="#{vendaControle.novo()}"/>
+                <p:commandButton value="Nova Compra" action="compraedita.xhtml?faces-redirect=true" ajax="false" actionListener="#{compraControle.novo()}"/>
             </h:form>
         </ui:define>
     </ui:composition>

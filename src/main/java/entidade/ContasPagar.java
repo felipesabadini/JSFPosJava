@@ -15,7 +15,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
-public class ContasReceber implements Serializable, BaseEntidade {
+public class ContasPagar implements Serializable, BaseEntidade {
 
     private static final long serialVersionUID = 1L;
     
@@ -34,20 +34,20 @@ public class ContasReceber implements Serializable, BaseEntidade {
     private Integer parcela;
     
     @ManyToOne
-    private Venda venda;
+    private Compra compra;
     
     @ManyToOne
     private Pessoa pessoa;
     
     @OneToMany(cascade = CascadeType.ALL, 
             fetch = FetchType.EAGER, 
-            mappedBy = "contasReceber", 
+            mappedBy = "contasPagar", 
             orphanRemoval = true)
-    private List<BaixaContasReceber> listaBaixa;
+    private List<BaixaContasPagar> listaBaixa;
 
     public Double getValorBaixado(){
         Double total = 0d;
-        for(BaixaContasReceber b : listaBaixa){
+        for(BaixaContasPagar b : listaBaixa){
             total += b.getValor();
         }
         return total;
@@ -69,11 +69,11 @@ public class ContasReceber implements Serializable, BaseEntidade {
         this.parcela = parcela;
     }
 
-    public List<BaixaContasReceber> getListaBaixa() {
+    public List<BaixaContasPagar> getListaBaixa() {
         return listaBaixa;
     }
 
-    public void setListaBaixa(List<BaixaContasReceber> listaBaixa) {
+    public void setListaBaixa(List<BaixaContasPagar> listaBaixa) {
         this.listaBaixa = listaBaixa;
     }
 
@@ -102,12 +102,12 @@ public class ContasReceber implements Serializable, BaseEntidade {
         this.valor = valor;
     }
 
-    public Venda getVenda() {
-        return venda;
+    public Compra getCompra() {
+        return compra;
     }
 
-    public void setVenda(Venda venda) {
-        this.venda = venda;
+    public void setCompra(Compra compra) {
+        this.compra = compra;
     }
 
     @Override
@@ -129,10 +129,10 @@ public class ContasReceber implements Serializable, BaseEntidade {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof ContasReceber)) {
+        if (!(object instanceof ContasPagar)) {
             return false;
         }
-        ContasReceber other = (ContasReceber) object;
+        ContasPagar other = (ContasPagar) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -141,7 +141,7 @@ public class ContasReceber implements Serializable, BaseEntidade {
 
     @Override
     public String toString() {
-        return "entidade.ContasReceber[ id=" + id + " ]";
+        return "entidade.ContasPagar[ id=" + id + " ]";
     }
 
 }

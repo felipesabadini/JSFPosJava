@@ -1,5 +1,7 @@
 package entidade;
 
+import com.ocpsoft.pretty.faces.annotation.URLMapping;
+import com.ocpsoft.pretty.faces.annotation.URLMappings;
 import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.PrimaryKeyJoinColumn;
@@ -7,8 +9,9 @@ import javax.persistence.PrimaryKeyJoinColumn;
 @Entity
 @PrimaryKeyJoinColumn(name = "id")
 public class PessoaJuridica extends Pessoa implements Serializable {
-
+    
     private String cnpj;
+    
     private String ie;
 
     public String getCnpj() {

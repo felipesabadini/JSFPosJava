@@ -15,8 +15,8 @@
                     <p:column headerText="Nome" filterBy="#{prod.nome}" filterMatchMode="contains">
                         <p:outputLabel value="#{prod.nome}"/>
                     </p:column>
-                    <p:column headerText="Grupo Produto" filterBy="#{prod.grupoProduto.nome}" filterMatchMode="contains">
-                        <p:outputLabel value="#{prod.grupoProduto.nome}"/>
+                    <p:column headerText="Grupo" filterBy="#{prod.grupoProduto.nome}" filterMatchMode="contains">
+                        #{prod.grupoProduto.nome}
                     </p:column>
                     <p:column headerText="Preço" filterBy="#{prod.preco}" filterMatchMode="contains">
                         <h:outputText value="#{prod.preco}" converter="#{produtoControle.moneyConverter}"/>
@@ -25,11 +25,11 @@
                         #{prod.estoque}
                     </p:column>
                     <p:column headerText="Opereações">
-                        <p:commandButton icon="ui-icon-pencil" action="produtoedita" ajax="false" actionListener="#{produtoControle.alterar(prod)}" />
+                        <p:commandButton icon="ui-icon-pencil" action="produtoedita.xhtml?faces-redirect=true" actionListener="#{produtoControle.alterar(prod)}"/>
                         <p:commandButton icon="ui-icon-closethick" ajax="false" actionListener="#{produtoControle.excluir(prod)}"/>
                     </p:column>
                 </p:dataTable>
-                <p:commandButton value="Novo Produto" action="produtoedita" ajax="false" actionListener="#{produtoControle.novo()}"/>
+                <p:commandButton value="Novo produto" action="produtoedita.xhtml?faces-redirect=true" ajax="false" actionListener="#{produtoControle.novo()}"/>
             </h:form>
         </ui:define>
     </ui:composition>

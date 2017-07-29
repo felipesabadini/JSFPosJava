@@ -12,23 +12,25 @@
                 <p:growl autoUpdate="true" />
                 <p:panelGrid columns="3" id="painel">
                     Nome:<p:inputText value="#{grupoProdutoControle.grupoProduto.nome}" id="nome"
-                                      required="true" requiredMessage="Nome obrigatório!"/>
+                                      required="true" requiredMessage="O nome é Obrigatório!"/>
                     <p:message for="nome"/>
-                </p:panelGrid>
-                <p:treeTable value="#{grupoProdutoControle.root}"
-                                       var="gp"
-                                       selection="#{grupoProdutoControle.noGrupo}"
-                                       selectionMode="single">
-                    <f:facet name="header">
-                        Grupo de Produto
-                    </f:facet>
-                    <p:column>
-                        <h:outputText value="#{gp.nome}"></h:outputText>
-                    </p:column>
-                </p:treeTable>
+                    </p:panelGrid>
+                    <p:treeTable value="#{grupoProdutoControle.root}" 
+                                 var="gp" 
+                                 selection="#{grupoProdutoControle.noGrupo}" 
+                                 selectionMode="single">
+
+                        <f:facet name="header">
+                            Grupo de produto
+                        </f:facet>
+                        <p:column>
+                            <h:outputText value="#{gp.nome}" />
+                        </p:column>
+                    </p:treeTable>
+                    
+                    <p:commandButton value="Salvar" actionListener="#{grupoProdutoControle.salvar()}" action="grupoprodutolista.xhtml?faces-redirect=true" ajax="false"/>
+                    <p:commandButton value="Voltar" action="grupoprodutolista.xhtml?faces-redirect=true" immediate="true" ajax="false" />
                 
-                <p:commandButton value="Salvar" actionListener="#{grupoProdutoControle.salvar()}" action="grupoprodutolista" ajax="false"/>
-                <p:commandButton value="Voltar" action="grupoprodutolista" immediate="true" ajax="false" />
             </h:form>
         </ui:define>
     </ui:composition>

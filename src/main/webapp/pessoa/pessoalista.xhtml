@@ -32,8 +32,8 @@
                         <p:commandButton icon="ui-icon-closethick" ajax="false" actionListener="#{pessoaControle.excluir(pessoa)}"/>
                     </p:column>
                 </p:dataTable>
-                <p:commandButton value="Nova Pessoa Física" action="pessoafisicaedita" ajax="false" actionListener="#{pessoaFisicaControle.novo()}"/>
-                <p:commandButton value="Nova Pessoa Jurídica" action="pessoajuridicaedita" ajax="false" actionListener="#{pessoaJuridicaControle.novo()}"/>
+                <p:commandButton value="Nova Pessoa Física" action="pessoafisicaedita.xhtml?faces-redirect=true" ajax="false" actionListener="#{pessoaFisicaControle.novo()}"/>
+                <p:commandButton value="Nova Pessoa Jurídica" action="pessoajuridicaedita.xhtml?faces-redirect=true" ajax="false" actionListener="#{pessoaJuridicaControle.novo()}"/>
             </h:form>
         </ui:define>
     </ui:composition>

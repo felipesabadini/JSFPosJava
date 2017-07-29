@@ -5,7 +5,7 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
-public abstract class AbstractFacade<T> implements Serializable{
+public abstract class AbstractFacade<T> implements Serializable {
     
     private Class<T> entityClass;
     
@@ -28,19 +28,18 @@ public abstract class AbstractFacade<T> implements Serializable{
     }
     
     public List<T> listaTodos(){
-        Query q = getEntityManager().createQuery("from " + entityClass.getSimpleName());
+        Query q = getEntityManager().createQuery("from "+entityClass.getSimpleName());
         return q.getResultList();
     }
     
-    public List<T> listaFiltrando(String filtro, String... atributos) {
+    public List<T> listaFiltrando(String filtro, String... atributos){
         String hql = "from " + entityClass.getSimpleName() + " obj where ";
-        for(String atributo: atributos) {
-            hql += "lower(obj." + atributo + ") like :param or "; 
+        for(String atributo : atributos ){
+            hql += "lower(obj." + atributo + ") like :param or ";
         }
-        hql = hql.substring(0, hql.length() - 3);
-        
+        hql = hql.substring(0, hql.length()-3);
         Query q = getEntityManager().createQuery(hql);
-        q.setParameter("param", "%" + filtro.toLowerCase() + "%");
+        q.setParameter("param", "%"+filtro.toLowerCase()+"%");
         return q.getResultList();
     }
     

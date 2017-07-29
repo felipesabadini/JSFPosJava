@@ -11,13 +11,12 @@
                 <p:growl autoUpdate="true" />
                 <p:panelGrid columns="3" id="painel">
                     Nome:<p:inputText value="#{pessoaJuridicaControle.pessoaJuridica.nome}" id="nome"
-                                      required="true" requiredMessage="Nome obrigatório!"/>
+                                      required="true" requiredMessage="O nome é Obrigatório!"/>
                     <p:message for="nome"/>
                     Endereço:<p:inputText value="#{pessoaJuridicaControle.pessoaJuridica.endereco}" id="end"
-                                      required="true" requiredMessage="Endereço obrigatório!"/>
+                                      required="true" requiredMessage="O endereço é Obrigatório!"/>
                     <p:message for="end"/>
-                    Cidade:<p:autoComplete id="cid"
-                                           value="#{pessoaJuridicaControle.pessoaJuridica.cidade}"
+                    Cidade:<p:autoComplete value="#{pessoaJuridicaControle.pessoaJuridica.cidade}"
                                            converter="#{pessoaControle.converterCidade}"
                                            completeMethod="#{pessoaControle.listaCidades}"
                                            var="cid"
@@ -25,19 +24,21 @@
                                            itemValue="#{cid}"
                                            forceSelection="true"
                                            required="true"
-                                           requiredMessage="Cidade obrigatória!"/>
+                                           requiredMessage="A cidade é obrigatório!"
+                                           id="cid"
+                                           />
                     <p:message for="cid"/>
                     Telefone:<p:inputText value="#{pessoaJuridicaControle.pessoaJuridica.telefone}" id="tel"
-                                      required="true" requiredMessage="Telefone obrigatório!"/>
+                                      required="true" requiredMessage="O telefone é Obrigatório!"/>
                     <p:message for="tel"/>
                     CNPJ:<p:inputText value="#{pessoaJuridicaControle.pessoaJuridica.cnpj}" id="cnpj"
-                                      required="true" requiredMessage="CNPJ obrigatório!"/>
+                                      required="true" requiredMessage="O CNPJ é Obrigatório!"/>
                     <p:message for="cnpj"/>
-                    IE:<p:inputText value="#{pessoaJuridicaControle.pessoaJuridica.ie}" id="ie"
-                                      required="true" requiredMessage="IE obrigatória!"/>
+                    Inscrição Estadual:<p:inputText value="#{pessoaJuridicaControle.pessoaJuridica.ie}" id="ie"
+                                      required="true" requiredMessage="A inscrição estadual é Obrigatório!"/>
                     <p:message for="ie"/>
-                    <p:commandButton value="Salvar" actionListener="#{pessoaJuridicaControle.salvar()}" action="pessoalista" ajax="false"/>
-                    <p:commandButton value="Voltar" action="pessoalista" immediate="true" ajax="false" />
+                    <p:commandButton value="Salvar" actionListener="#{pessoaJuridicaControle.salvar()}" action="pessoalista.xhtml?faces-redirect=true" ajax="false"/>
+                    <p:commandButton value="Voltar" action="pessoalista.xhtml?faces-redirect=true" immediate="true" ajax="false" />
                 </p:panelGrid>
             </h:form>
         </ui:define>

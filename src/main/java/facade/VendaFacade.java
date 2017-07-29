@@ -1,15 +1,15 @@
 package facade;
 
-import entidade.ContasReceber;
 import entidade.ItensVenda;
 import entidade.Produto;
 import entidade.Venda;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 @Stateless
-public class VendaFacade extends AbstractFacade<Venda>{
+public class VendaFacade extends AbstractFacade<Venda> {
 
     @PersistenceContext(name = "aulajsfposjavaPU")
     private EntityManager em;
@@ -24,26 +24,38 @@ public class VendaFacade extends AbstractFacade<Venda>{
     }
 
     @Override
-    public void salvar(Venda venda) {
-        baixarEstoque(venda);
-        geraContasReceber(em.merge(venda));
+    public List<Venda> listaTodos() {
+        List<Venda> vendas = super.listaTodos();
+        for(Venda v : vendas){
+            v.getItensVendas().size();
+            v.getListaContasReceber().size();
+        }
+        return vendas;
     }
     
-    private void baixarEstoque(Venda venda){
-        for(ItensVenda it: venda.getItensVendas()) {
+
+    @Override
+    public void salvar(Venda venda) {
+        baixarEstoque(venda);   
+        em.merge(venda);
+//        geraContasReceber(em.merge(venda));
+    }
+
+    private void baixarEstoque(Venda venda) {
+        for(ItensVenda it : venda.getItensVendas()){
             Produto p = it.getProduto();
             p.setEstoque(p.getEstoque() - it.getQuantidade());
             em.merge(p);
         }
     }
-    
-    private void geraContasReceber(Venda venda) {
-        ContasReceber cr = new ContasReceber();
-        cr.setDataLancamento(venda.getDataVenda());
-        cr.setDataVencimento(venda.getDataVenda());
-        cr.setValor(venda.getValorTotal());
-        cr.setVenda(venda);
-        em.merge(cr);
-    }
+
+//    private void geraContasReceber(Venda venda) {
+//        ContasReceber cr = new ContasReceber();
+//        cr.setDataLancamento(venda.getDataVenda());
+//        cr.setVencimento(venda.getDataVenda());
+//        cr.setValor(venda.getValorTotal());  
+//        cr.setVenda(venda);
+//        em.merge(cr);
+//    }
     
 }

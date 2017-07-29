@@ -12,6 +12,9 @@
                              paginator="true" rows="3"
                              paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
                              rowsPerPageTemplate="3,5,10,15,20,50,100">
+                    <p:column headerText="Código" filterBy="#{est.id}" filterMatchMode="contains">
+                        <p:outputLabel value="#{est.id}"/>
+                    </p:column>
                     <p:column headerText="Nome" filterBy="#{est.nome}" filterMatchMode="contains">
                         <p:outputLabel value="#{est.nome}"/>
                     </p:column>
@@ -19,11 +22,11 @@
                         #{est.sigla}
                     </p:column>
                     <p:column headerText="Opereações">
-                        <p:commandButton icon="ui-icon-pencil" action="estadoedita" actionListener="#{estadoControle.alterar(est)}"/>
+                        <p:commandButton icon="ui-icon-pencil" action="estadoedita.xhtml?faces-redirect=true" actionListener="#{estadoControle.alterar(est)}"/>
                         <p:commandButton icon="ui-icon-closethick" ajax="false" actionListener="#{estadoControle.excluir(est)}"/>
                     </p:column>
                 </p:dataTable>
-                <p:commandButton value="Novo estado" action="estadoedita" ajax="false" actionListener="#{estadoControle.novo()}"/>
+                <p:commandButton value="Novo estado" action="estadoedita.xhtml?faces-redirect=true" ajax="false" actionListener="#{estadoControle.novo()}"/>
             </h:form>
         </ui:define>
     </ui:composition>

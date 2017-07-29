@@ -12,7 +12,7 @@
                              paginator="true" rows="3"
                              paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
                              rowsPerPageTemplate="3,5,10,15,20,50,100"
-                             emptyMessage="Nenhum grupo de produto cadastrado.">
+                             emptyMessage="Nenhum grupo de produto cadastrado!">
                     <p:column headerText="Nome" filterBy="#{gp.nome}" filterMatchMode="contains">
                         <p:outputLabel value="#{gp.nome}"/>
                     </p:column>
@@ -20,11 +20,11 @@
                         #{gp.grupoProduto.nome}
                     </p:column>
                     <p:column headerText="Opereações">
-                        <p:commandButton icon="ui-icon-pencil" action="grupoprodutoedita" actionListener="#{grupoProdutoControle.alterar(gp)}"/>
+                        <p:commandButton icon="ui-icon-pencil" action="grupoprodutoedita.xhtml?faces-redirect=true" actionListener="#{grupoProdutoControle.alterar(gp)}"/>
                         <p:commandButton icon="ui-icon-closethick" ajax="false" actionListener="#{grupoProdutoControle.excluir(gp)}"/>
                     </p:column>
                 </p:dataTable>
-                <p:commandButton value="Novo GP" action="grupoprodutoedita" ajax="false" actionListener="#{grupoProdutoControle.novo()}"/>
+                <p:commandButton value="Novo Grupo de Produto" action="grupoprodutoedita.xhtml?faces-redirect=true" ajax="false" actionListener="#{grupoProdutoControle.novo()}"/>
             </h:form>
         </ui:define>
     </ui:composition>

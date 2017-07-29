@@ -1,7 +1,6 @@
 package entidade;
 
 import java.io.Serializable;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -9,7 +8,7 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
 @Entity
-public class Cidade implements Serializable, BaseEntidade {
+public class ItensCompra implements Serializable {
 
     private static final long serialVersionUID = 1L;
     
@@ -17,29 +16,52 @@ public class Cidade implements Serializable, BaseEntidade {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     
-    @Column(length = 100, nullable = false)
-    private String nome;
+    private Double quantidade;
+    
+    private Double preco;
     
     @ManyToOne
-    private Estado estado;
+    private Produto produto;
+    
+    @ManyToOne
+    private Compra compra;
 
-    public String getNome() {
-        return nome;
+    public Double getSubTotal(){
+        return quantidade * preco;
+    }
+    
+    public Produto getProduto() {
+        return produto;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setProduto(Produto produto) {
+        this.produto = produto;
     }
 
-    public Estado getEstado() {
-        return estado;
+    public Compra getCompra() {
+        return compra;
     }
 
-    public void setEstado(Estado estado) {
-        this.estado = estado;
+    public void setCompra(Compra compra) {
+        this.compra = compra;
     }
 
-    @Override
+    public Double getQuantidade() {
+        return quantidade;
+    }
+
+    public void setQuantidade(Double quantidade) {
+        this.quantidade = quantidade;
+    }
+
+    public Double getPreco() {
+        return preco;
+    }
+
+    public void setPreco(Double preco) {
+        this.preco = preco;
+    }
+
     public Long getId() {
         return id;
     }
@@ -58,10 +80,10 @@ public class Cidade implements Serializable, BaseEntidade {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Cidade)) {
+        if (!(object instanceof ItensCompra)) {
             return false;
         }
-        Cidade other = (Cidade) object;
+        ItensCompra other = (ItensCompra) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -70,7 +92,7 @@ public class Cidade implements Serializable, BaseEntidade {
 
     @Override
     public String toString() {
-        return "enetidade.Cidade[ id=" + id + " ]";
+        return "entidade.ItensCompra[ id=" + id + " ]";
     }
-
+    
 }

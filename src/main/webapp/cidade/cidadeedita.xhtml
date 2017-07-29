@@ -23,8 +23,8 @@
                                        itemValue="#{est}"/>
                     </p:selectOneMenu>
                     <p:message for="estado"/>
-                    <p:commandButton value="Salvar" actionListener="#{cidadeControle.salvar()}" action="cidadelista" ajax="false"/>
-                    <p:commandButton value="Voltar" action="cidadelista" immediate="true" ajax="false"/>
+                    <p:commandButton value="Salvar" actionListener="#{cidadeControle.salvar()}" action="cidadelista.xhtml?faces-redirect=true" ajax="false"/>
+                    <p:commandButton value="Voltar" action="cidadelista.xhtml?faces-redirect=true" immediate="true" ajax="false"/>
                 </p:panelGrid>
             </h:form>
         </ui:define>

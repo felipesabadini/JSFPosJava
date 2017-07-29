@@ -7,7 +7,6 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
         <title>Sistema Pós Unicesumar</title>
-        
         <h:outputScript library="js" name="/mascaraMonetaria/Parsers.js" />
         <h:outputScript library="js" name="/mascaraMonetaria/JavaScriptUtil.js" />
         <h:outputScript library="js" name="/mascaraMonetaria/InputMask.js" />   
@@ -59,16 +58,17 @@
                               size="180" header="Menu">
                     <p:panelMenu style="width: 170">
                         <p:submenu label="Cadastros">
-                            <p:menuitem value="Estado" action="/estado/estadolista" ajax="false"/>
-                            <p:menuitem value="Cidade" action="/cidade/cidadelista" ajax="false"/>
-                            <p:menuitem value="Pessoa" action="/pessoa/pessoalista" ajax="false"/>
-                            <p:menuitem value="Grupo Produto" action="/grupoproduto/grupoprodutolista" ajax="false"/>
-                            <p:menuitem value="Produto" action="/produto/produtolista" ajax="false"/>
+                            <p:menuitem value="Estado" action="/estado/estadolista.xhtml?faces-redirect=true" ajax="false"/>
+                            <p:menuitem value="Cidade" action="/cidade/cidadelista.xhtml?faces-redirect=true" ajax="false"/>
+                            <p:menuitem value="Pessoa" action="/pessoa/pessoalista.xhtml?faces-redirect=true" ajax="false"/>
+                            <p:menuitem value="Produto" action="/produto/produtolista.xhtml?faces-redirect=true" ajax="false"/>
+                            <p:menuitem value="Grupo Produto" action="/grupoproduto/grupoprodutolista.xhtml?faces-redirect=true" ajax="false"/>
                         </p:submenu>
                         <p:submenu label="Movimentos">
-                            <p:menuitem value="Compra" action="#" ajax="false"/>
-                            <p:menuitem value="Venda" action="/venda/vendalista" ajax="false"/>
-                            <p:menuitem value="Contas a Receber" action="/contasreceber/contasreceberlista" ajax="false"/>
+                            <p:menuitem value="Compra" action="/compra/compralista.xhtml?faces-redirect=true" ajax="false"/>
+                            <p:menuitem value="Venda" action="/venda/vendalista.xhtml?faces-redirect=true" ajax="false"/>
+                            <p:menuitem value="Contas à Pagar" action="/contaspagar/contaspagarlista.xhtml?faces-redirect=true" ajax="false"/>
+                            <p:menuitem value="Contas à Receber" action="/contasreceber/contasreceberlista.xhtml?faces-redirect=true" ajax="false"/>
                         </p:submenu>
                         <p:submenu label="Relatórios">
                             <p:menuitem value="Estado" action="#" ajax="false"/>

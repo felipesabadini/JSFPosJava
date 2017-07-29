@@ -11,29 +11,30 @@
                 <p:growl autoUpdate="true" />
                 <p:panelGrid columns="3" id="painel">
                     Nome:<p:inputText value="#{produtoControle.produto.nome}" id="nome"
-                                      required="true" requiredMessage="Nome obrigatório!"/>
+                                      required="true" requiredMessage="O nome é Obrigatório!"/>
                     <p:message for="nome"/>
-                    Grupo Produto:<p:autoComplete id="grupo"
-                                                  value="#{produtoControle.produto.grupoProduto}"
-                                                  converter="#{produtoControle.converterGrupoProduto}"
-                                                  completeMethod="#{produtoControle.listaGrupoProduto}"
-                                                  var="gp"
-                                                  itemLabel="#{gp.nome}"
-                                                  itemValue="#{gp}"
-                                                  forceSelection="true"
-                                                  required="true"
-                                                  requiredMessage="Grupo Produto obrigatório!"/>
+                    Grupo:<p:autoComplete value="#{produtoControle.produto.grupoProduto}" 
+                                          id="grupo" 
+                                          required="true" 
+                                          requiredMessage="O grupo é obrigatório!"
+                                          completeMethod="#{produtoControle.listaGrupos}"
+                                          converter="#{produtoControle.converterGrupo}"
+                                          var="gp"
+                                          forceSelection="true"
+                                          itemLabel="#{gp.nome}"
+                                          itemValue="#{gp}"
+                                          />
                     <p:message for="grupo"/>
-                    Preço:<p:inputText value="#{produtoControle.produto.preco}" id="preco"
+                    Preço:<p:inputText value="#{produtoControle.produto.preco}" id="preco" 
                                        converter="#{produtoControle.moneyConverter}"
                                        onkeydown="mascaraMonetaria(this)"
-                                       required="true" requiredMessage="Preço obrigatório!"/>
+                                       required="true" requiredMessage="O preço é obrigatório!"/>
                     <p:message for="preco"/>
-                    Estoque:<p:inputText value="#{produtoControle.produto.estoque}" id="estoque"
-                                      required="true" requiredMessage="Estoque obrigatório!"/>
+                    Estoque:<p:inputText value="#{produtoControle.produto.estoque}" id="estoque" 
+                                       required="true" requiredMessage="O estoque é obrigatório!"/>
                     <p:message for="estoque"/>
-                    <p:commandButton value="Salvar" actionListener="#{produtoControle.salvar()}" action="produtolista" ajax="false"/>
-                    <p:commandButton value="Voltar" action="produtolista" immediate="true" ajax="false" />
+                    <p:commandButton value="Salvar" actionListener="#{produtoControle.salvar()}" action="produtolista.xhtml?faces-redirect=true" ajax="false"/>
+                    <p:commandButton value="Voltar" action="produtolista.xhtml?faces-redirect=true" immediate="true" ajax="false" />
                 </p:panelGrid>
             </h:form>
         </ui:define>

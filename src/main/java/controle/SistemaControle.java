@@ -1,14 +1,15 @@
 package controle;
 
 import entidade.Temas;
+import java.io.Serializable;
 import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
 
 @ManagedBean
 @ApplicationScoped
-public class SistemaControle {
+public class SistemaControle implements Serializable {
 
-    private Temas temas = Temas.afterdark;
+    private Temas temas = Temas.bootstrap;
 
     public Temas getTemas() {
         return temas;

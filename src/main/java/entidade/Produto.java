@@ -25,15 +25,6 @@ public class Produto implements Serializable, BaseEntidade {
     @ManyToOne
     private GrupoProduto grupoProduto;
 
-    @Override
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
     public String getNome() {
         return nome;
     }
@@ -65,8 +56,15 @@ public class Produto implements Serializable, BaseEntidade {
     public void setGrupoProduto(GrupoProduto grupoProduto) {
         this.grupoProduto = grupoProduto;
     }
-    
-    
+
+    @Override
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     @Override
     public int hashCode() {
@@ -77,6 +75,7 @@ public class Produto implements Serializable, BaseEntidade {
 
     @Override
     public boolean equals(Object object) {
+        // TODO: Warning - this method won't work in the case the id fields are not set
         if (!(object instanceof Produto)) {
             return false;
         }
@@ -91,5 +90,5 @@ public class Produto implements Serializable, BaseEntidade {
     public String toString() {
         return "entidade.Produto[ id=" + id + " ]";
     }
-    
+
 }
